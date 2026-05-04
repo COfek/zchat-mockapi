@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import chat
+from app.routers import chat, init
 
 app = FastAPI(title="Zchat Mock API")
 
@@ -12,4 +12,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(init.router)
 app.include_router(chat.router)
